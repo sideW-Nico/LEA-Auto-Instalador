@@ -1,0 +1,120 @@
+qtile
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+tree
+git
+gparted
+alacritty
+ristretto
+rofi
+firewalld
+file-roller
+arandr
+blueman
+bluez
+bluez-utils
+coreshot
+htop
+iftop
+libreoffice-fresh-es
+obs-studio
+obs-ndi
+steam
+rofi
+unrar
+file-roller
+
+# # Entorno de productividad
+# Configurar oh my zsh
+zsh
+zsh-completions
+# Instalar nvchad
+neovim
+
+# Para máquinas virtuales
+virt-manager
+aqemu
+qemu-full
+virtualbox
+
+# # Utilidades del sistema
+linux
+linux-firmware
+linux-headers
+python
+autoconf
+autofs
+automake
+base
+binutils
+bison
+archlinux-keyring
+efibootmgr
+gcc
+grub
+grub-customizer
+lightdm
+lxappearance
+man-db
+make
+neofetch
+nerd-fonts-complete
+net-tools
+networkmanager
+network-manager-applet
+ntfs-3g
+papirus-icon-theme
+alsa-utils
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+powerline
+powerline-fonts
+python-pip
+qemu-full
+qrencode
+smartmontools
+ttf-fira-code
+vulkan-tools
+wget
+xclip
+wireplumber
+xdg-utils
+xorg-server
+xorg-host
+xorg-init
+xorg-xinput
+xfdesktop
+xfwm4
+xfwm4-themes
+xfce4
+zram-generator
+fuse3
+
+# Añadir chaotic-aur
+chaotic-keyring
+chaotic-mirrorlist
+
+# De chaotic-aur
+whatsie-git
+yay-git
+zoom
+oh-my-zsh-git
+
+# IDEs
+eclipse-java
+java-openjfx
+jre-openjdk-headless
+
+# # SSH
+# Configurar archivos SSH para google authenticator
+libpam-google-authenticator
+
+# Instalaciones externas
++librewolf-bin
++lightdm-webkit-theme-aether
++picom-jonaburg-git
++ttf-ms-win11-auto

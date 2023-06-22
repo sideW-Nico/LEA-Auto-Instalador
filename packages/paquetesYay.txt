@@ -1,0 +1,4 @@
+librewolf-bin
+lightdm-webkit-theme-aether
+picom-jonaburg-git
+ttf-ms-win11-auto

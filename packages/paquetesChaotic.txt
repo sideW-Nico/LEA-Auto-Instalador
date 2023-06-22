@@ -1,0 +1,6 @@
+whatsie-git
+yay
+zoom
+oh-my-zsh-git
+chaotic-keyring
+chaotic-mirrorlist

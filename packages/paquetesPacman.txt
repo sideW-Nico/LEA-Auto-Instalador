@@ -25,21 +25,12 @@ steam
 rofi
 unrar
 file-roller
-
-# # Entorno de productividad
-# Configurar oh my zsh
 zsh
 zsh-completions
-# Instalar nvchad
 neovim
-
-# Para máquinas virtuales
 virt-manager
-aqemu
 qemu-full
 virtualbox
-
-# # Utilidades del sistema
 linux
 linux-firmware
 linux-headers
@@ -73,6 +64,8 @@ pipewire-jack
 pipewire-pulse
 powerline
 powerline-fonts
+python-powerline
+powerline-common
 python-pip
 qemu-full
 qrencode
@@ -93,28 +86,8 @@ xfwm4-themes
 xfce4
 zram-generator
 fuse3
-
-# Añadir chaotic-aur
-chaotic-keyring
-chaotic-mirrorlist
-
-# De chaotic-aur
-whatsie-git
-yay-git
-zoom
-oh-my-zsh-git
-
-# IDEs
 eclipse-java
 java-openjfx
+jre-openjdk
 jre-openjdk-headless
-
-# # SSH
-# Configurar archivos SSH para google authenticator
 libpam-google-authenticator
-
-# Instalaciones externas
-+librewolf-bin
-+lightdm-webkit-theme-aether
-+picom-jonaburg-git
-+ttf-ms-win11-auto

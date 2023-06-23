@@ -20,7 +20,7 @@ else
   exit 1
 fi
 
-echo "${SIN_COLOR}Añadiendo chaotic-aur a /etc/pacman.conf..."
+echo "${AZUL}Añadiendo chaotic-aur a /etc/pacman.conf...${SIN_COLOR}"
 
 if echo $repositorios | sudo tee -a /etc/pacman.conf > /dev/null ; then
   echo "${VERDE}Exito..."
@@ -29,5 +29,5 @@ else
   exit 2
 fi
 
-echo "${VERDE}Repositorio agregado correctamente...${SIN_COLOR}"
+echo "${VERDE}###Repositorios agregados correctamente...${SIN_COLOR}"
 exit 0

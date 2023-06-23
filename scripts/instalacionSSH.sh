@@ -8,16 +8,16 @@ AZUL='\033[0;34m'
 ROJO='\033[0;31m'
 VERDE='\033[0;32m'
 
-let sshdLocal = "../sourceFiles/sshd"
-let sshdDestino = "/etc/pam.d/sshd"
+sshdLocal="../sourceFiles/sshd"
+sshdDestino="/etc/pam.d/sshd"
 
-let sshd_configLocal = "../sourceFiles/sshd_config"
-let sshd_configDestino = "/etc/ssh/sshd_config"
+sshd_configLocal="../sourceFiles/sshd_config"
+sshd_configDestino="/etc/ssh/sshd_config"
 
 echo "${AZUL}###INSTALACION SSH"
 echo "Activando servicios de sshd...${SIN_COLOR}"
 
-if sudo bash systemctl enable sshd.service && sudo bash systemctl start sshd.service ; then
+if sudo systemctl enable sshd.service && sudo systemctl start sshd.service ; then
   echo "${VERDE}Exito..."
 else
   echo "${ROJO}Error al activar los servicios de sshd..."
@@ -25,13 +25,12 @@ else
 fi
 
 echo "${AZUL}Seleccione el número del puerto: ${SIN_COLOR}"
-let puertoNuevo
-read -r $puertoNuevo
+read -r puertoNuevo
 
-let puertoViejo = cat $sshd_configLocal | grep "Port [0-9]*" | cut -d " " -f2
+puertoViejo=$(cat $sshd_configLocal | grep "Port [0-9]*" | cut -d " " -f2)
 
 echo "${AZUL}Cambiando el número del puerto...${SIN_COLOR}"
-if sudo bash cat sed -i "s%Port\ $puertoViejo%Port\ $puertoNuevo%g" $sshd_configLocal then ;
+if sudo sed -i "s%Port\ $puertoViejo%Port\ $puertoNuevo%g" $sshd_configLocal ; then
   echo "${VERDE}Exito..."
 else
   echo "${ROJO}Error cambiando el número del puerto..."
@@ -39,7 +38,7 @@ else
 fi
 
 echo "${AZUL}Estableciendo información de sshd_config y sshd${SIN_COLOR}"
-if sudo bash cat $sshd_configLocal > $sshd_configDestino && sudo bash cat $sshdLocal > $sshdDestino ; then
+if cat $sshd_configLocal | sudo tee $sshd_configDestino > /dev/null && cat $sshdLocal | sudo tee $sshdDestino > /dev/null ; then
   echo "${VERDE}Exito..."
 else
   echo "${ROJO}Error estableciendo información de sshd_config y sshd..."
@@ -47,7 +46,7 @@ else
 fi
 
 echo "${AZUL}Configurando Google Authenticator...${SIN_COLOR}"
-if sudo bash google-authenticator ; then
+if google-authenticator ; then
   echo "${VERDE}Exito..."
 else
   echo "${ROJO}Error configurando Google Authenticator..."
@@ -55,7 +54,7 @@ else
 fi
 
 echo "${AZUL}Reiniciando el servicio sshd${SIN_COLOR}"
-if sudo bash systemctl restart sshd.service ; then
+if sudo systemctl restart sshd.service ; then
   echo "${VERDE}Exito..."
 else
   echo "${ROJO}Error al reiniciar el servicio sshd"

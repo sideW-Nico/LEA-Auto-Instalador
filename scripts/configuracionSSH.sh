@@ -14,7 +14,7 @@ sshdDestino="/etc/pam.d/sshd"
 sshd_configLocal="../sourceFiles/sshd_config"
 sshd_configDestino="/etc/ssh/sshd_config"
 
-echo "${AZUL}###INSTALACION SSH"
+echo "${AZUL}###CONFIGURACIÓN SSH"
 echo "Activando servicios de sshd...${SIN_COLOR}"
 
 if sudo systemctl enable sshd.service && sudo systemctl start sshd.service ; then
@@ -61,5 +61,4 @@ else
   exit 4
 fi
 
-echo "${VERDE}###Instalación de ssh realizada correctamente...${SIN_COLOR}"
 exit 0

@@ -17,4 +17,19 @@ else
   exit 1
 fi
 
+if bash ./scripts/configuracionSSH.sh ; then
+  echo "${VERDE}###SSH configurado correctamente...${SIN_COLOR}"
+else
+  echo "${ROJO}###Error configurando SSH...${SIN_COLOR}"
+  exit 2
+fi
 
+if bash ./scripts/archivosDeConfiguracion.sh ; then
+  echo "${VERDE}###Archivos del sistema configurados correctamente...${SIN_COLOR}"
+else
+  echo "${VERDE}###Error configurando los archivos del sistema${SIN_COLOR}"
+fi
+
+echo "${AZUL}###AUTO INSTALADOR FINALIZADO SIN ERRORES###${SIN_COLOR}"
+
+exit 0

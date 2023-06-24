@@ -10,7 +10,7 @@ AZUL='\033[0;34m'
 ROJO='\033[0;31m'
 VERDE='\033[0;32m'
 
-echo "${AZUL}###INSTALACION DE REPOSITORIOS###"
+echo "${AZUL}###AÑADIENDO REPOSITORIOS"
 echo "Instalando claves del repositorio chaotic-aur...${SIN_COLOR}"
 
 if sudo bash pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com && sudo bash pacman-key --lsign-key 3056513887B78AEB && sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' ; then
@@ -29,5 +29,4 @@ else
   exit 2
 fi
 
-echo "${VERDE}###Repositorios agregados correctamente...${SIN_COLOR}"
 exit 0

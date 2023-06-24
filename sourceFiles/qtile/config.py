@@ -1,0 +1,1 @@
+/home/leandro/.config/qtile/config.py

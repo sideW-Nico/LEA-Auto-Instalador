@@ -8,6 +8,7 @@ AZUL='\033[0;34m'
 ROJO='\033[0;31m'
 VERDE='\033[0;32m'
 
+
 echo "${AZUL}###CONFIGURACIÓN DE ARCHIVOS DEL SISTEMA${SIN_COLOR}"
 
 echo "${AZUL}Creando directorios...${SIN_COLOR}"
@@ -17,6 +18,11 @@ else
   echo "${ROJO}Error creando directorios...${SIN_COLOR}"
   exit 1
 fi
+
+sudo touch $HOME/.config/alacritty/alacritty.yml
+sudo touch $HOME/.config/qtile/config.py
+sudo touch $HOME/.config/qtile/autostart.sh
+sudo chmod 700 $HOME/.config/qtile/autostart.sh
 
 echo "${AZUL}Insertando/modificando archivos de configuración...${SIN_COLOR}"
 if cat ../sourceFiles/alacritty.yml | sudo tee $HOME/.config/alacritty/alacritty.yml && cat ../sourceFiles/qtile/config.py | sudo tee $HOME/.config/qtile/config.py && cat ../sourceFiles/qtile/autostart.sh | sudo tee $HOME/.config/qtile/autostart.sh ; then

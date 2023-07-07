@@ -9,6 +9,7 @@ ROJO='\033[0;31m'
 VERDE='\033[0;32m'
 
 echo "${AZUL}###AUTO INSTALADOR (por Leandro López)###${SIN_COLOR}"
+: '
 
 if bash ./scripts/instalarPaquetes.sh ; then
   echo "${VERDE}###Paquetes instalados exitosamente...${SIN_COLOR}"
@@ -17,13 +18,15 @@ else
   exit 1
 fi
 
+
+
 if bash ./scripts/configuracionSSH.sh ; then
   echo "${VERDE}###SSH configurado correctamente...${SIN_COLOR}"
 else
   echo "${ROJO}###Error configurando SSH...${SIN_COLOR}"
   exit 2
 fi
-
+':
 if bash ./scripts/archivosDeConfiguracion.sh ; then
   echo "${VERDE}###Archivos del sistema configurados correctamente...${SIN_COLOR}"
 else

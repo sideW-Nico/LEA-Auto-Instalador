@@ -1,6 +1,8 @@
 whatsie-git
+autofs
 yay
 zoom
 oh-my-zsh-git
 chaotic-keyring
 chaotic-mirrorlist
+eclipse-java

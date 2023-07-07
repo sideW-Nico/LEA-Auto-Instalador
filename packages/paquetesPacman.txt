@@ -34,7 +34,6 @@ linux-firmware
 linux-headers
 python
 autoconf
-autofs
 automake
 base
 binutils
@@ -81,7 +80,6 @@ xfwm4-themes
 xfce4
 zram-generator
 fuse3
-eclipse-java
 java-openjfx
 jre-openjdk
 jre-openjdk-headless

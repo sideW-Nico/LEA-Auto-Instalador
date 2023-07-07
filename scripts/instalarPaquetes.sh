@@ -28,7 +28,7 @@ else
 fi
 
 echo "${AZUL}Instalando paquetes generales (chaotic-aur repo)${SIN_COLOR}"
-if sudo pacman -S $(cat ./packages/paquetesChaotic.txt) ; then
+if sudo pacman -Sy $(cat ./packages/paquetesChaotic.txt) ; then
   echo "${VERDE}Éxito...${SIN_COLOR}"
 else
   echo "${ROJO}Error al instalar los paquetes (chaotic-aur repo)${SIN_COLOR}"
@@ -36,7 +36,7 @@ else
 fi
 
 echo "${AZUL}Instalando paquetes generales (yay)${SIN_COLOR}"
-if yay -S $(cat ./packages/paquetesYay.txt) ; then
+if yay -Sy $(cat ./packages/paquetesYay.txt) ; then
   echo "${VERDE}Éxito...${SIN_COLOR}"
 else
   echo "${ROJO}Error al instalar los paquetes (yay)${SIN_COLOR}"

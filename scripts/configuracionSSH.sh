@@ -8,14 +8,17 @@ AZUL='\033[0;34m'
 ROJO='\033[0;31m'
 VERDE='\033[0;32m'
 
-sshdLocal="../sourceFiles/sshd"
+sshdLocal="./sourceFiles/sshd"
 sshdDestino="/etc/pam.d/sshd"
 
-sshd_configLocal="../sourceFiles/sshd_config"
+sshd_configLocal="./sourceFiles/sshd_config"
 sshd_configDestino="/etc/ssh/sshd_config"
 
 echo "${AZUL}###CONFIGURACIÓN SSH"
 echo "Activando servicios de sshd...${SIN_COLOR}"
+
+sudo touch $sshdDestino
+sudo touch $sshd_configDestino
 
 if sudo systemctl enable sshd.service && sudo systemctl start sshd.service ; then
   echo "${VERDE}Exito..."

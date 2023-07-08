@@ -1,1 +1,2 @@
-/home/leandro/.config/qtile/autostart.sh
+#!/bin/sh
+picom --experimental-backend &

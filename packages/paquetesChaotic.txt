@@ -1,8 +1,9 @@
-whatsie-git
+google-chrome
 autofs
 yay
-zoom
 oh-my-zsh-git
 chaotic-keyring
 chaotic-mirrorlist
 eclipse-java
+xampp
+qtile-extras-git

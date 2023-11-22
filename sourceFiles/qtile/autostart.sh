@@ -1,2 +1,2 @@
 #!/bin/sh
-picom --experimental-backend &
+picom &

@@ -19,7 +19,6 @@ htop
 iftop
 libreoffice-fresh-es
 obs-studio
-steam
 unrar
 zsh
 zsh-completions
@@ -75,7 +74,6 @@ zram-generator
 fuse3
 java-openjfx
 jre-openjdk
-jre-openjdk-headless
 libpam-google-authenticator
 arduino
 arduino-builder
@@ -92,3 +90,5 @@ vlc
 syslog-ng
 brightnessctl
 php
+steam
+nerd-fonts

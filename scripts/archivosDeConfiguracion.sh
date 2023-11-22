@@ -26,12 +26,11 @@ sudo chmod 700 $HOME/.config/qtile/autostart.sh
 sudo chown $(whoami) $HOME/.config/qtile/autostart.sh
 sudo chgrp $(whoami) $HOME/.config/qtile/autostart.sh
 sudo touch $HOME/.config/picom.conf
-#Hay que colocar este archivo
-#sudo touch $HOME/.config/rofi/rofiPersonalizado.rasi
+sudo touch $HOME/.config/rofi/rofiPersonalizado.rasi
 
 
 echo "${AZUL}Insertando/modificando archivos de configuración...${SIN_COLOR}"
-if cat ../sourceFiles/alacritty.yml | sudo tee $HOME/.config/alacritty/alacritty.yml && cat ../sourceFiles/qtile/config.py | sudo tee $HOME/.config/qtile/config.py && cat ../sourceFiles/qtile/autostart.sh | sudo tee $HOME/.config/qtile/autostart.sh && cat ../sourceFiles/picom.conf | sudo tee $HOME/.config/picom.conf ; then
+if cat ../sourceFiles/alacritty.yml | sudo tee $HOME/.config/alacritty/alacritty.yml && cat ../sourceFiles/qtile/config.py | sudo tee $HOME/.config/qtile/config.py && cat ../sourceFiles/qtile/autostart.sh | sudo tee $HOME/.config/qtile/autostart.sh && cat ../sourceFiles/picom.conf | sudo tee $HOME/.config/picom.conf && cat ../sourceFiles/rofi/rofiPersonalizado.rasi |sudo tee $HOME/.config/rofi/rofiPersonalizado.rasi; then
   echo "${VERDE}Éxito...${SIN_COLOR}"
 else
   echo "${ROJO}Error insertando/modificando los archivos de configuración...${SIN_COLOR}"

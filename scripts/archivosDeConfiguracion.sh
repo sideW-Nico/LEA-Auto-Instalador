@@ -12,7 +12,7 @@ VERDE='\033[0;32m'
 echo "${AZUL}###CONFIGURACIÓN DE ARCHIVOS DEL SISTEMA${SIN_COLOR}"
 
 echo "${AZUL}Creando directorios...${SIN_COLOR}"
-if mkdir -p $HOME/.config && mkdir -p $HOME/.config/alacritty && mkdir -p $HOME/.config/qtile; then
+if mkdir -p $HOME/.config && mkdir -p $HOME/.config/alacritty && mkdir -p $HOME/.config/qtile && mkdir -p $HOME/.config/rofi ; then
   echo "${VERDE}Éxito...${SIN_COLOR}"
 else
   echo "${ROJO}Error creando directorios...${SIN_COLOR}"

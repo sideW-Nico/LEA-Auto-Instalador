@@ -15,7 +15,7 @@ echo "${AZUL}###INSTALADOR DE PAQUETES${SIN_COLOR}"
 
 #Hay que configurar las dos lineas al mismo tiempo, de caso contrario se descomentan todos los otros include por defecto del archivo que llevan al mismo mirrorlist de pacman.d
 echo "${AZUL}Habilitando repositorios multilib y extra...${SIN_COLOR}"
-if sudo sed -i -f ./multilibAnidado.sed $rutaPacmanConf && sudo sed -i -f ./extraAnidado.sed $rutaPacmanConf ; then
+if sudo sed -i -f ./scripts/multilibAnidado.sed $rutaPacmanConf && sudo sed -i -f ./scripts/extraAnidado.sed $rutaPacmanConf ; then
 	echo "${VERDE}Éxito...${SIN_COLOR}"
 else
 	echo "${ROJO}Error al habilitar los repositorios multilib y extra...${SIN_COLOR}"

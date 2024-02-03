@@ -233,7 +233,7 @@ screens = [
                     ),
                
                 widget.Net(
-                        fmt="直  {}",
+                        fmt="󰖩  {}",
                         format="{down} ↓↑ {up}",
                         background=nord["darkblue"],
                         ),  
@@ -254,7 +254,7 @@ screens = [
                         ),
 
                 widget.Volume(
-                    fmt="墳   {}",
+                    fmt="󰕾   {}",
                     background=nord["darkblue"],
                     ), 
                  
@@ -264,7 +264,7 @@ screens = [
                         ),
 
                 widget.Battery(
-                        fmt="  {}",
+                        fmt="󰁹  {}",
                         format="{percent:2.0%}",
                         background=nord["darkblue"],
                         ),
@@ -289,8 +289,8 @@ screens = [
                 
                 widget.WidgetBox(
                     background=nord["fire"],
-                    text_closed="拉 ",
-                    text_open="  ﰲ",
+                    text_closed="󰐦 ",
+                    text_open="󰜴  ",
                     fontsize=16,
                     widgets=[
                         widget.TextBox(

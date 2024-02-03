@@ -50,7 +50,6 @@ networkmanager
 network-manager-applet
 ntfs-3g
 papirus-icon-theme
-pipewire-pulse
 powerline
 powerline-fonts
 python-powerline
@@ -91,3 +90,4 @@ brightnessctl
 php
 steam
 nerd-fonts
+pavucontrol

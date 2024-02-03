@@ -1,6 +1,5 @@
 librewolf-bin
 lightdm-webkit-theme-aether
-picom-jonaburg-git
 obs-ndi
 nerd-fonts-complete
 coreshot

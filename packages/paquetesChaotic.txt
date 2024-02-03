@@ -1,7 +1,6 @@
 google-chrome
 autofs
 yay
-oh-my-zsh-git
 chaotic-keyring
 chaotic-mirrorlist
 eclipse-java

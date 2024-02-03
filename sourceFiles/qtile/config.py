@@ -87,7 +87,7 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
 
     #Keybinds personalizados
-    Key([mod], "q", lazy.spawn("rofi -show drun -show-icons -theme squared-nord", "Ejecuta Rofi para aplicaciones")),
+    Key([mod], "q", lazy.spawn("rofi -show drun -show-icons -theme rofiPersonalizado", "Ejecuta Rofi para aplicaciones")),
 ]
 
 #groups = [Group(i) for i in "123456789"]

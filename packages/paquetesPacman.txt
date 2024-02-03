@@ -72,8 +72,7 @@ xfwm4-themes
 xfce4
 zram-generator
 fuse3
-java-openjfx
-jre-openjdk
+picom
 libpam-google-authenticator
 arduino
 arduino-builder

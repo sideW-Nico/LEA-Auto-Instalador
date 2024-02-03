@@ -66,7 +66,7 @@ function reanudarInstalacion () {
 
 function modificarEstadoActual () {
 	echo $1 > $rutaEstado
-	$estadoActual=$(cat $rutaEstado)
+	estadoActual=$1
 }
 
 function finalizarInstalacion (){

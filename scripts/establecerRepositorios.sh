@@ -4,6 +4,7 @@
 shopt -s xpg_echo
 
 repositorios="[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist"
+chaoticExistente=$(grep -i "chaotic-aur" /etc/pacman.conf | wc -w)
 
 SIN_COLOR='\033[0m'
 AZUL='\033[0;34m'
@@ -20,13 +21,15 @@ else
   exit 1
 fi
 
-echo "${AZUL}Añadiendo chaotic-aur a /etc/pacman.conf...${SIN_COLOR}"
+if [[ $chaoticExistente -eq 0 ]] ; then
+  echo "${AZUL}Añadiendo chaotic-aur a /etc/pacman.conf...${SIN_COLOR}"
 
-if echo $repositorios | sudo tee -a /etc/pacman.conf > /dev/null ; then
-  echo "${VERDE}Exito..."
-else
-  echo "${ROJO}Error añadiendo chaotic-aur a /etc/pacman.conf..."
-  exit 2
+  if echo $repositorios | sudo tee -a /etc/pacman.conf > /dev/null ; then
+    echo "${VERDE}Exito..."
+  else
+    echo "${ROJO}Error añadiendo chaotic-aur a /etc/pacman.conf..."
+    exit 2
+  fi
 fi
 
 exit 0

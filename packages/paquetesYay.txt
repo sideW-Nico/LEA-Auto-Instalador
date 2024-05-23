@@ -3,3 +3,4 @@ lightdm-webkit-theme-aether
 obs-ndi
 nerd-fonts-complete
 ttf-ms-win11-auto
+qtile-extras-git

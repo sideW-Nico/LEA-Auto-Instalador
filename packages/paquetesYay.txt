@@ -2,4 +2,4 @@ librewolf-bin
 lightdm-webkit-theme-aether
 obs-ndi
 nerd-fonts-complete
-coreshot
+ttf-ms-win11-auto

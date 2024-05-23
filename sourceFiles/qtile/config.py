@@ -27,7 +27,8 @@
 from libqtile import bar, layout, widget, qtile, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-# from libqtile.utils import guess_terminal
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration
 
 import os
 import subprocess
@@ -42,26 +43,24 @@ mod = "mod4"
 terminal = "alacritty"
 
 keys = [
-    # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
-    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "j", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
-    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "k", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "i", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "i", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "j", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
-    Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
-    Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "k", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "i", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -79,33 +78,12 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-
-    #Sonido
-    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -c 0 sset Master 1- unmute")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -c 0 sset Master 1+ unmute")),
 
     #Keybinds personalizados
     Key([mod], "q", lazy.spawn("rofi -show drun -show-icons -theme rofiPersonalizado", "Ejecuta Rofi para aplicaciones")),
 ]
 
-#groups = [Group(i) for i in "123456789"]
-
-groups = [
-            Group("1",label="  "),
-            Group("2",label="  "),
-            Group("3",label="  "),
-            #Group("3",spawn="joplin-desktop",label="  "),
-            Group("4",label="  "),
-            #Group("4",spawn="min",label=" 爵 "),
-            Group("5",label="  "),
-            #Group("5",spawn="atom",label="  "),
-            Group("6",label="  "),
-            Group("7", label="  "),
-            Group("8",label="  "),
-            Group("9",label="  "),
-]
+groups = [Group(f"{i+1}", label="󰏃") for i in range(5)]
 
 for i in groups:
     keys.extend(
@@ -131,31 +109,73 @@ for i in groups:
         ]
     )
 
-# Funcion que almacena la estetica general del sistema
+bordeIzquierdo = {
+    "decorations": [
+        PowerLineDecoration(path="rounded_left", size=10)
+    ]
+}
+
+bordeDerecho = {
+    "decorations": [
+        PowerLineDecoration(path="rounded_right", size=10)
+    ]
+}
+
+bordeCentral = {
+    "decorations": [
+        PowerLineDecoration(path="forward_slash", size=10)
+    ]
+}
+
+bordeCentral2 = {
+    "decorations": [
+        PowerLineDecoration(path="back_slash", size=10)
+    ]
+}
+
+bordeApagado = {
+    "decorations": [
+        PowerLineDecoration(path="rounded_right", size=5)
+    ]
+}
+
+barra = {
+    "fondo": "#2e3440",
+    "grupoSeleccionado": "#cae1fc",
+    "grupoInactivo": "#526680",
+    "grupoActivo": "#5398ed",
+}
+
+
+
+# Configuración de  estilo  de los layouts
 def init_layout_theme():
-    return {"margin":5,
+    return  {"margin":3,
             "border_width":2,
-            "border_focus": "#6790EB",
-            "border_normal": "4c566a"
+            "border_focus": barra["grupoActivo"],
+            "border_normal": "#4c566a",
             }
 
 layout_theme = init_layout_theme()
 
+floating_layout = layout.Floating(
+    float_rules=[
+        # Run the utility of `xprop` to see the wm class and name of an X client.
+        *layout.Floating.default_float_rules,
+        Match(wm_class="confirmreset"),  # gitk
+        Match(wm_class="makebranch"),  # gitk
+        Match(wm_class="maketag"),  # gitk
+        Match(wm_class="ssh-askpass"),  # ssh-askpass
+        Match(title="branchdialog"),  # gitk
+        Match(title="pinentry"),  # GPG key password entry
+    ],
+    **layout_theme,
+)
+
 layouts = [
-    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    # layout.Columns(**layout_theme),
     layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(**layout_theme),
     layout.MonadTall(**layout_theme),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Bsp(**layout_theme),
 ]
 
 widget_defaults = dict(
@@ -165,163 +185,128 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-# Colores
-nord = {
-        "darkblue": "#5e81ac",
-        "lavanda": "#81a1c1",
-        "skyblue": "#88c0d0",
-        "greenblue": "#8fbcbb",
-        "fire": "#bf616a",
-        }
-
 screens = [
     Screen(
-        wallpaper='/home/leandro/Imágenes/firewatch-aesthetic.jpg',
+        wallpaper='/home/leandro/Imágenes/Fondos de Escritorio/wp2438002-ultrawide-wallpapers.png',
         wallpaper_mode='fill',
         top=bar.Bar(
             [
                 widget.TextBox(
-                    text="  "
-                    ),
-                widget.Spacer(length=5),
-                widget.TextBox(
-                    text="",
-                    padding=-0.1,
-                    fontsize=20,
-                    foreground=nord["darkblue"],
-                    background="#00000000",
+                    text="  ",
+                    background="#000000",
+                    fontsize=16,
+                    mouse_callbacks={'Button1': lambda:qtile.cmd_spawn('rofi -show drun -show-icons -theme rofiPersonalizado'),},
+                    **bordeCentral2
                     ),
 
                 widget.GroupBox(
                     padding=2,
                     highlight_method="block",
-                    background=nord["darkblue"],
-                    highlight_color="#282745",
-                    inactive=nord["skyblue"],
+                    active=barra["grupoActivo"],
+                    inactive=barra["grupoInactivo"],
+                    block_highlight_text_color=barra["grupoSeleccionado"],
+                    background=barra["fondo"],
+                    this_current_screen_border=barra["fondo"],
+                    fontsize=16,
+                    **bordeCentral2
                     ),
 
-                widget.TextBox(
-                    text="",
-                    padding=-0.8,
-                    fontsize=20,
-                    foreground=nord["darkblue"],
-                    background="#00000000",
-                    ),
-                
-                widget.Prompt(),
+                widget.CurrentLayoutIcon(
+                    background=barra["grupoInactivo"],
+                    use_mask=True,
+                    foreground=barra["grupoSeleccionado"],
+                    padding=1,
+                    scale=0.7255,
+                    **bordeIzquierdo,
+                ),
 
                 widget.Spacer(length=5),
 
                 widget.WindowName(
                     padding=0,
-                    ),
-                
-                
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                
-                widget.TextBox(
-                    text="",
-                    padding=-0.1,
-                    fontsize=20,
-                    foreground=nord["darkblue"],
-                    background="#00000000",
+                    font="Fira Code Medium",
+                    fontsize=12,
+                    **bordeDerecho,
                     ),
                
-                widget.Net(
-                        fmt="󰖩  {}",
-                        format="{down} ↓↑ {up}",
-                        background=nord["darkblue"],
-                        ),  
- 
-                widget.TextBox(
-                        text="  ",
-                        background=nord["darkblue"],
-                        ),
-                
-                widget.Clock(
-                        format="  %H:%M     %A %-d de %B, %Y",
-                        background=nord["darkblue"],
-                        ),
-                 
-                widget.TextBox(
-                        text="  ",
-                        background=nord["darkblue"],
-                        ),
-
-                widget.Volume(
-                    fmt="󰕾   {}",
-                    background=nord["darkblue"],
-                    ), 
-                 
-                widget.TextBox(
-                        text="  ",
-                        background=nord["darkblue"],
-                        ),
-
-                widget.Battery(
-                        fmt="󰁹  {}",
-                        format="{percent:2.0%}",
-                        background=nord["darkblue"],
-                        ),
-
-                widget.TextBox(
-                    text="",
-                    padding=-0.8,
-                    fontsize=20,
-                    foreground=nord["darkblue"],
-                    background="#00000000",
-                    ),
-                
-                widget.Spacer(length=5),
-
-                widget.TextBox(
-                    text="",
-                    padding=-0.1,
-                    fontsize=20,
-                    foreground=nord["fire"],
-                    background="#00000000",
-                    ),
-                
                 widget.WidgetBox(
-                    background=nord["fire"],
-                    text_closed="󰐦 ",
-                    text_open="󰜴  ",
-                    fontsize=16,
+                    background=barra["fondo"],
+                    text_closed="",
+                    text_open="",
+                    fontsize=15,
+                    foreground=barra["grupoSeleccionado"],
+                    widgets=[
+                        widget.StatusNotifier(
+                            background=barra["fondo"],
+                            **bordeCentral,
+                        ),
+                    ],
+                    **bordeCentral,
+                ),
+
+                
+
+                widget.Clock(
+                    format="󰃰 %d-%m-%y [%H:%M]",
+                    font= "Fira Code Bold", 
+                    background=barra["grupoInactivo"],
+                    fontsize=13.5,
+                    **bordeCentral,
+                    ),
+                 
+                widget.PulseVolume(
+                   fmt="󰕾 {}",
+                   background=barra["fondo"],
+                   font="Fira Code Bold",
+                   fontsize=13.5,
+                   ),
+
+                
+                widget.TextBox(
+                    text=" ",
+                    background=barra["fondo"],
+                    padding=-1,
+                    **bordeIzquierdo,
+                ),
+                
+                widget.Spacer(length=5, **bordeApagado),
+
+                widget.WidgetBox(
+                    background="#bf616a",
+                    text_closed="󰐦",
+                    text_open="󰜴 ",
+                    fontsize=18,
+                    padding=5,
                     widgets=[
                         widget.TextBox(
                             text=" ",
                             padding=3,
-                            fontsize=14,
+                            fontsize=15,
                             mouse_callbacks={'Button1': lambda:qtile.cmd_spawn('shutdown -h now'),},
-                            background=nord["fire"],
+                            background="#bf616a",
                         ),
 
                         widget.TextBox(
                             text=" ",
                             padding=3,
-                            fontsize=14,
+                            fontsize=15,
                             mouse_callbacks={'Button1': lambda:qtile.cmd_spawn('shutdown -r now'),},
-                            background=nord["fire"],
+                            background="#bf616a",
                         ),
 
                         widget.TextBox(
                             text="⭘ ",
                             padding=3,
-                            fontsize=14,
+                            fontsize=15,
                             mouse_callbacks={'Button1': lazy.shutdown(),},
-                            background=nord["fire"],
+                            background="#bf616a",
                         ),
-                    ]
+                    ],
                 ),
 
 
             ],
-            20,
+            25,
             background="#00000000",
         ),
     ),
@@ -339,18 +324,7 @@ dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
-        *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
-    ]
-)
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True

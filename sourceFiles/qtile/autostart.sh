@@ -1,2 +1,4 @@
 #!/bin/sh
 picom &
+
+lxsession &

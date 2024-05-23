@@ -1,4 +1,5 @@
 qtile
+qtile-extras
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
@@ -23,8 +24,6 @@ unrar
 zsh
 zsh-completions
 neovim
-virt-manager
-qemu-full
 virtualbox
 linux
 linux-firmware
@@ -44,7 +43,7 @@ lightdm
 lxappearance
 man-db
 make
-neofetch
+fastfetch
 net-tools
 networkmanager
 network-manager-applet
@@ -91,3 +90,7 @@ php
 steam
 nerd-fonts
 pavucontrol
+python-psutil
+xfce4-screenshooter
+piper
+lxsession-gtk3

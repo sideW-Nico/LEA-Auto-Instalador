@@ -37,7 +37,6 @@ archlinux-keyring
 efibootmgr
 gcc
 grub
-grub-customizer
 lightdm
 lxappearance
 man-db
@@ -71,10 +70,6 @@ zram-generator
 fuse3
 picom
 libpam-google-authenticator
-arduino
-arduino-builder
-arduino-cli
-arduino-ctags
 bzip2
 code
 docker

@@ -3,5 +3,4 @@ autofs
 yay
 chaotic-keyring
 chaotic-mirrorlist
-eclipse-java
 xampp

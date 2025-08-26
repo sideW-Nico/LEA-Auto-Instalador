@@ -1,5 +1,4 @@
 google-chrome
-autofs
 yay
 chaotic-keyring
 chaotic-mirrorlist

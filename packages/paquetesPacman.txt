@@ -1,3 +1,4 @@
+tmux
 qtile
 thunar
 thunar-archive-plugin

@@ -1,5 +1,4 @@
 librewolf-bin
-obs-ndi
 nerd-fonts-complete
 ttf-ms-win11-auto
 qtile-extras-git

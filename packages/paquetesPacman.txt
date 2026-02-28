@@ -88,4 +88,3 @@ pavucontrol
 python-psutil
 xfce4-screenshooter
 piper
-lxsession-gtk3

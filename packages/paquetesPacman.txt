@@ -88,3 +88,4 @@ pavucontrol
 python-psutil
 xfce4-screenshooter
 piper
+debugedit

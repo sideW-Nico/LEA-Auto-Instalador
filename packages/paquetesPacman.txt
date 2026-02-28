@@ -90,3 +90,6 @@ xfce4-screenshooter
 piper
 debugedit
 fakeroot
+python-dbus-fast
+python-pulsectl-asyncio
+python-iwlib

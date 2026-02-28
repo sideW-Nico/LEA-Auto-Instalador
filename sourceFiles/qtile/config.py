@@ -187,7 +187,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper='/home/leandro/Imágenes/Fondos de Escritorio/wp2438002-ultrawide-wallpapers.png',
+        wallpaper='/home/lea/Imágenes/Fondos de Escritorio/minimalista-azul.jpg',
         wallpaper_mode='fill',
         top=bar.Bar(
             [
@@ -220,7 +220,22 @@ screens = [
                     **bordeIzquierdo,
                 ),
 
-                widget.Spacer(length=5),
+                widget.Spacer(
+                    length=5,
+                    **bordeCentral2,
+                ),
+
+                #widget.GlobalMenu(
+                #    padding=10,
+                #    font="Fira Code Medium",
+                #    background=barra["fondo"],
+                #    fontsize=12,
+                #    **bordeCentral2,
+                #),
+
+                #widget.Spacer(
+                #    length=3,
+                ##),
 
                 widget.WindowName(
                     padding=0,
@@ -240,11 +255,37 @@ screens = [
                             background=barra["fondo"],
                             **bordeCentral,
                         ),
+
+                        widget.TextBox(
+                            text="|",
+                            background=barra["fondo"],
+                            font="Fira Code Bold",
+                            fontsize=15,
+                        ),
+
+                        widget.PulseVolume(
+                            fmt="󰕾 {}",
+                            background=barra["fondo"],
+                            font="Fira Code Bold",
+                            fontsize=13.5,
+                        ),
+
+                        widget.TextBox(
+                            text="|",
+                            background=barra["fondo"],
+                            font="Fira Code Bold",
+                            fontsize=15,
+                        ),
+
+                        widget.WiFiIcon(
+                            expanded_timeout=2,
+                            background=barra["fondo"],
+                            padding=6,
+                            **bordeCentral,
+                        ),
                     ],
                     **bordeCentral,
                 ),
-
-                
 
                 widget.Clock(
                     format="󰃰 %d-%m-%y [%H:%M]",
@@ -252,20 +293,18 @@ screens = [
                     background=barra["grupoInactivo"],
                     fontsize=13.5,
                     **bordeCentral,
+                    ),     
+                
+                widget.UPowerWidget(
+                    margin=3,
+                    background=barra["fondo"],
+                    font="Fira Code Bold",
                     ),
-                 
-                widget.PulseVolume(
-                   fmt="󰕾 {}",
-                   background=barra["fondo"],
-                   font="Fira Code Bold",
-                   fontsize=13.5,
-                   ),
-
                 
                 widget.TextBox(
                     text=" ",
                     background=barra["fondo"],
-                    padding=-1,
+                    padding=-4,
                     **bordeIzquierdo,
                 ),
                 
